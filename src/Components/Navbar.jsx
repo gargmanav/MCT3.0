@@ -3,8 +3,13 @@ import './navbar.css'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-const Navbar = ({setlogintype}) => {
+const Navbar = ({setdetaildata,setlogintype}) => {
     const {Useralldata} = useSelector((storedata)=>storedata)
+    
+    const update = () => {
+      setlogintype(false)
+      setdetaildata({})
+    }
   return (
     <div>
         <nav className='headstick'>
@@ -17,10 +22,10 @@ const Navbar = ({setlogintype}) => {
         <Link to="/home"><li>Home</li></Link>
         <Link to="/userdetail"><li>Userdetail</li></Link>
         <Link to="/search"><li>Search</li></Link>
-        <Link to="/"><li onClick={()=>setlogintype(false)}>Logout</li></Link>
+        <li onClick={update}>Logout</li>
         <Link to='/userdetail'><div  id='account'>
         <i class="fa-solid fa-user"></i>
-        <p>{Useralldata.name}</p>
+        <p>{Useralldata.login}</p>
         </div></Link>
       </ul>
     </nav>
@@ -29,3 +34,8 @@ const Navbar = ({setlogintype}) => {
 }
 
 export default Navbar
+
+
+
+
+

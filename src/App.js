@@ -11,15 +11,15 @@ function App() {
   
   const [logintype, setlogintype] = useState(false)
   const[homedata,sethomedata] = useState({})
-  console.log(homedata);
-  const [detaildata,setdetaildata] = useState(homedata)
   
+  const [detaildata,setdetaildata] = useState(homedata)
+  console.log(logintype);
   
   return (
     <>
     <Routes>
     <Route path='/' element={logintype?<Navigate to="/home"/>:<Login setlogintype={setlogintype}/>}/>
-        <Route path='/home' element={logintype?<Homepage setdetaildata={setdetaildata} sethomedata={sethomedata}/>:<Navigate to="/"/>}/>
+        <Route path='/home' element={logintype?<Homepage setdetaildata={setdetaildata} sethomedata={sethomedata} setlogintype={setlogintype}/>:<Navigate to="/"/>}/>
         <Route path='/userdetail' element={logintype?<Userdetail/>:<Navigate to="/"/>}/>
         <Route path='/search' element={logintype?<Search setdetaildata={setdetaildata}/>:<Navigate to="/"/>}/>
         <Route path='/details' element={logintype?<Details detaildata={detaildata} />:<Navigate to="/"/>}/>

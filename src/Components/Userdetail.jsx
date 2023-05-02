@@ -13,8 +13,14 @@ const Userdetail = () => {
     const data = await res.json();
     setReposData(data);
   };
+  const fetchlang=async()=>{
+    const res = await fetch(reposData.languages_url);
+    const data = await res.json();
+    console.log(data);
+  }
   useEffect(() => {
     fetchRepos();
+    fetchlang();
   }, []);
 
   return (
@@ -27,7 +33,7 @@ const Userdetail = () => {
             <img src={Useralldata.avatar_url}></img>
           </div>
           <div className='rightuser'>
-            <h2>{Useralldata.name}</h2>
+            <h2>{Useralldata.login}</h2>
             <div className='userposts'>
               <p>Repo:   {Useralldata.public_repos}</p>
               <p>Following:  {Useralldata.followers_url.length}</p>
@@ -45,14 +51,15 @@ const Userdetail = () => {
           <div className='innercarduser'>
               <ul>
                 {reposData.map((repou) => {
+                  {console.log(repou.languages_url) }
                     return <div className='usercardbottom'>
                         <div className='leftcardbottm'>
-                            <h1>{repou.name}</h1>
-                  
+                            <h1>{repou.name}<span className='mereander'>&nbsp;&nbsp;Javascript&nbsp;&nbsp;</span></h1>
+                            <p style={{color:"red"}}>Javascript,React,Html,css</p>
                         </div>
                         <div className='rightcardbottom'>
-                         <Link><button>View Repo</button></Link>
-                         <Link><button>Live Demo</button></Link>
+                         <Link to={repou.html_url}><button>View Repo</button></Link>
+                         <Link to={repou.homepage}><button>Live Demo</button></Link>
                         </div>
                     </div>
                     })}

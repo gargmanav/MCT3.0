@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
-import { useSelector } from 'react-redux'
 import "./home.css"
 import { Link } from 'react-router-dom'
-const Homepage = ({setdetaildata,sethomedata}) => {
+const Homepage = ({setdetaildata,sethomedata,setlogintype}) => {
     const [tiles, settiles] = useState([])
     useEffect(()=>{
      tiledata()
@@ -12,13 +11,14 @@ const Homepage = ({setdetaildata,sethomedata}) => {
     const tiledata=async()=>{
      const res = await fetch("https://api.github.com/users")
      const datas = await res.json()
+     console.log(datas);
      settiles(datas)
      sethomedata(datas[0])
     }
 
   return (
       <div className='homebody' >
-        <Navbar/>
+            <Navbar setdetaildata={setdetaildata} setlogintype={setlogintype}/>
         <h1 style={{textAlign:"center"}}>Homepage</h1>
         <div className='allcards'>
     {

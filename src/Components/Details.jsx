@@ -12,6 +12,8 @@ const Details = ({detaildata}) => {
     const res = await fetch(detaildata.repos_url);
     const data = await res.json();
     setReposData(data);
+    console.log(reposData);
+    
   };
   
   useEffect(() => {
@@ -22,7 +24,7 @@ const Details = ({detaildata}) => {
     <>
       <Navbar />
       <div className='maincontentuserdetail'>
-        <h1 style={{textAlign:"center",color:"black"}}>User Details</h1>
+        <h1 style={{textAlign:"center",color:"black"}}>Details</h1>
         <div className='carduserdetail'>
           <div className='leftuserdetail'>
             <img src={detaildata.avatar_url}></img>
@@ -48,12 +50,12 @@ const Details = ({detaildata}) => {
                 {reposData.map((repou) => {
                     return <div className='usercardbottomdetail'>
                         <div className='leftcardbottmdetail'>
-                            <h3>{repou.name}</h3>
-                  
+                            <h3>{repou.name}<span className='mereander'>&nbsp;&nbsp;Javascript&nbsp;&nbsp;</span></h3>
+                            <p style={{color:"black"}}>React,Javascript,html,css</p>
                         </div>
                         <div className='rightcardbottomdetail'>
-                         <Link><button>View Repo</button></Link>
-                         <Link><button>Live Demo</button></Link>
+                         <Link to={repou.html_url}><button>View Repo</button></Link>
+                         <Link to={repou.homepage}><button>Live Demo</button></Link>
                         </div>
                     </div>
                     })}

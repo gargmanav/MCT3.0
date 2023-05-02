@@ -1,4 +1,5 @@
 .maincontentuserdetail{
+    margin-top: 100px;
     width: 100%;
     height: 100%;
     color: black;
@@ -14,6 +15,7 @@
     height: 20rem;
     text-align: center;
     color: black;
+    margin-bottom: 33px;
 }
 .userpostsdetail{
     display: flex;
@@ -35,7 +37,7 @@ button{
     font-size: 18px;
     background-color: purple;
     border-radius: 10px;
-    width: 120px;
+    width: 140px;
 }
 .carduserdetail{
     width: 80rem;
@@ -88,3 +90,12 @@ button{
     width: 40%;
     color: black;
 }
+@media (max-width:858){
+    .userdowncarddetail{
+        border: 2px solid green;
+        width: inherit;
+        height: 100vh;
+        margin-top: 200px;
+    }
+    
+}   
