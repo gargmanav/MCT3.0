@@ -16,7 +16,7 @@ const Details = ({detaildata}) => {
   
   useEffect(() => {
     fetchRepos();
-  }, []);
+  }, [detaildata]);
 
   return (
     <>
@@ -28,7 +28,7 @@ const Details = ({detaildata}) => {
             <img src={detaildata.avatar_url}></img>
           </div>
           <div className='rightuserdetail'>
-            <h2>{detaildata.login.toUpperCase()}</h2>
+            <h2>{detaildata.login}</h2>
             <div className='userpostsdetail'>
               <p>Repo:   {reposData.length}</p>
               <p>Following:  {detaildata.followers_url.length}</p>

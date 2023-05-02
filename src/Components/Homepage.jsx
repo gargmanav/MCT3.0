@@ -3,22 +3,23 @@ import Navbar from './Navbar'
 import { useSelector } from 'react-redux'
 import "./home.css"
 import { Link } from 'react-router-dom'
-const Homepage = ({setdetaildata}) => {
-    const mydata = useSelector((storedata)=>storedata)
+const Homepage = ({setdetaildata,sethomedata}) => {
     const [tiles, settiles] = useState([])
     useEffect(()=>{
      tiledata()
-    },[])
+    },[])   
  
     const tiledata=async()=>{
      const res = await fetch("https://api.github.com/users")
      const datas = await res.json()
      settiles(datas)
+     sethomedata(datas[0])
     }
 
   return (
-      <div className='homebody'>
+      <div className='homebody' >
         <Navbar/>
+        <h1 style={{textAlign:"center"}}>Homepage</h1>
         <div className='allcards'>
     {
         tiles.map((ele)=>{

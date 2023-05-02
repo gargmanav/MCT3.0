@@ -5,18 +5,21 @@ import Userdetail from './Components/Userdetail';
 import { useState } from 'react';
 import Search from './Components/Search';
 import Details from './Components/Details';
+import "./App.css"
 
 function App() {
   
   const [logintype, setlogintype] = useState(false)
-  const [detaildata,setdetaildata] = useState({})
+  const[homedata,sethomedata] = useState({})
+  console.log(homedata);
+  const [detaildata,setdetaildata] = useState(homedata)
   
   
   return (
     <>
     <Routes>
     <Route path='/' element={logintype?<Navigate to="/home"/>:<Login setlogintype={setlogintype}/>}/>
-        <Route path='/home' element={logintype?<Homepage setdetaildata={setdetaildata}/>:<Navigate to="/"/>}/>
+        <Route path='/home' element={logintype?<Homepage setdetaildata={setdetaildata} sethomedata={sethomedata}/>:<Navigate to="/"/>}/>
         <Route path='/userdetail' element={logintype?<Userdetail/>:<Navigate to="/"/>}/>
         <Route path='/search' element={logintype?<Search setdetaildata={setdetaildata}/>:<Navigate to="/"/>}/>
         <Route path='/details' element={logintype?<Details detaildata={detaildata} />:<Navigate to="/"/>}/>

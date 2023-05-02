@@ -7,18 +7,18 @@ const Navbar = ({setlogintype}) => {
     const {Useralldata} = useSelector((storedata)=>storedata)
   return (
     <div>
-        <nav>
+        <nav className='headstick'>
       <input type="checkbox" id="check"/>
       <label for="check" className="checkbtn">
         <i className="fas fa-bars"></i>
       </label>
-      <label className="logo">DesignX</label>
+      <label className="logo">GeekSter</label>
       <ul>
         <Link to="/home"><li>Home</li></Link>
         <Link to="/userdetail"><li>Userdetail</li></Link>
         <Link to="/search"><li>Search</li></Link>
         <Link to="/"><li onClick={()=>setlogintype(false)}>Logout</li></Link>
-        <Link to='userdetail'><div  id='account'>
+        <Link to='/userdetail'><div  id='account'>
         <i class="fa-solid fa-user"></i>
         <p>{Useralldata.name}</p>
         </div></Link>

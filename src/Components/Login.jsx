@@ -11,12 +11,19 @@ const Login = ({setlogintype}) => {
 
     const apifetch = async () => {
         const res = await fetch(`https://api.github.com/users/${userid}`);
-        const data = await res.json();
-        setuserdata(data);
-        console.log(userdata);
-        setlogintype(true);
-        dispatch(loginpagedataofuser(data));
+        if(res.status !== 404) {
+          const data = await res.json();
+          setuserdata(data);
+          console.log(userdata);
+          setlogintype(true);
+          dispatch(loginpagedataofuser(data));
+        } 
+        else {
+          alert("Invalid username");
+        }
     };
+  
+    
     
     return (
         <div className="maincontainer">
@@ -32,7 +39,7 @@ const Login = ({setlogintype}) => {
                     <input
                         id="uname"
                         type="text"
-                        placeholder="Username"
+                        placeholder="Github username"
                         onChange={(e)=>setuserid(e.target.value)}
                     />
                     <input
@@ -55,5 +62,6 @@ const Login = ({setlogintype}) => {
     );
 };
 
-export default Login;
+export default Login; 
+
 

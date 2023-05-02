@@ -9,25 +9,26 @@
     font-family: montserrat;
   }
   nav{
-    background: #0082e6;
+    background: #29B475;
     height: 80px;
     width: 100%;
   }
   label.logo{
     color: white;
     font-size: 35px;
-    line-height: 80px;
+    line-height: 75px;
     padding: 0 100px;
     font-weight: bold;
   }
   nav ul{
     float: right;
     margin-right: 20px;
+    margin-bottom: 0px;
   }
  
   nav ul li {
     display: inline-block;
-    line-height: 80px;
+    line-height: 61px;
     margin: 0 5px;
     color: white;
     font-size: 17px;
@@ -36,8 +37,16 @@
     text-transform: uppercase;
   }
   li.active,li:hover{
-    background: #1b9bff;
+    background: rgb(75, 190, 75);
     transition: .5s;
+    line-height: initial;
+    
+  }
+  .headstick{
+    position: fixed;
+top: 0;
+width: 100%;
+
   }
   .checkbtn{
     font-size: 30px;
@@ -114,5 +123,5 @@
     margin-left: 5px;
     display:inline-block;
     color: white;
-    font-size: 18px;
+    font-size: 15px;
   }
